@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using GrowApp.Models;
 
 namespace GrowApp2._0.Data
 {
@@ -17,8 +18,8 @@ namespace GrowApp2._0.Data
         public int friendship_id { get; set; }
         public Friendship Friendship { get; set; }
 
-        public string can_edit { get; set; }
+        public bool can_edit { get; set; }
 
-        public string added_at { get; set; }
+        public DateTime added_at { get; set; }
     }
 }
