@@ -54,3 +54,25 @@ debug/
 *.swp
 *.bak
 *.tmp
+
+# Ignore Debugging Files for .NET 8.0
+backend/GrowApp2.0/obj/Debug/
+backend/GrowApp2.0/obj/Debug/net8.0/
+backend/GrowApp2.0/obj/Release/
+backend/GrowApp2.0/obj/Release/net8.0/
+backend/GrowApp2.0/bin/
+
+# Ignore IDE and user-specific settings
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider and ReSharper
+_ReSharper.Caches/
+*.sln.DotSettings.user
+
+# macOS
+.DS_Store
