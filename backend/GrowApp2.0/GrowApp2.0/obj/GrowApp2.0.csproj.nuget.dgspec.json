@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {}
+    "/Users/test/RiderProjects/Grow2.0/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {}
   },
   "projects": {
-    "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {
+    "/Users/test/RiderProjects/Grow2.0/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
+        "projectUniqueName": "/Users/test/RiderProjects/Grow2.0/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
         "projectName": "GrowApp2.0",
-        "projectPath": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
-        "packagesPath": "/Users/shirleycruz/.nuget/packages/",
-        "outputPath": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/obj/",
+        "projectPath": "/Users/test/RiderProjects/Grow2.0/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
+        "packagesPath": "/Users/test/.nuget/packages/",
+        "outputPath": "/Users/test/RiderProjects/Grow2.0/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/obj/",
         "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/shirleycruz/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
+        "configFilePaths": ["/Users/test/.nuget/NuGet/NuGet.Config"],
+        "originalTargetFrameworks": ["net8.0"],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -29,15 +25,14 @@
           }
         },
         "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -87,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/test/.dotnet/sdk/9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
