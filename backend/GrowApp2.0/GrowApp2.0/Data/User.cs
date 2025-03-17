@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-namespace GrowApp.Models
+
+namespace GrowApp2._0.Data
 {
     public class User
     {
