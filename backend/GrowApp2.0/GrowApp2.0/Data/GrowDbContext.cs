@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using GrowApp2._0.Data;
 using System.Collections.Generic;
-using GrowApp.Models;
 
 namespace GrowApp2._0.Data
 {

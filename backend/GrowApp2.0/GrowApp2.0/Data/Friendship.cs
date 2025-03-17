@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using GrowApp.Models;
 
 namespace GrowApp2._0.Data
 {
