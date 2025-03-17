@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/bckben/RiderProjects/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {}
+    "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {}
   },
   "projects": {
-    "/Users/bckben/RiderProjects/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {
+    "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bckben/RiderProjects/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
+        "projectUniqueName": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
         "projectName": "GrowApp2.0",
-        "projectPath": "/Users/bckben/RiderProjects/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
-        "packagesPath": "/Users/bckben/.nuget/packages/",
-        "outputPath": "/Users/bckben/RiderProjects/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/obj/",
+        "projectPath": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/GrowApp2.0.csproj",
+        "packagesPath": "/Users/shirleycruz/.nuget/packages/",
+        "outputPath": "/Users/shirleycruz/GrowApp2.0/backend/GrowApp2.0/GrowApp2.0/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/bckben/.nuget/NuGet/NuGet.Config"
+          "/Users/shirleycruz/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -80,20 +79,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -102,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
