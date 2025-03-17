@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrowApp2.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dffbc62ae4113ce7a8577ca25505f6c8eeb09c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b54f1ea38e941b9b2d8af312d6f6c01dd108a11b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrowApp2.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrowApp2.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
