@@ -1,0 +1,78 @@
+# Visual Studio / JetBrains Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.log
+
+# Build output
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# NuGet Packages
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+.nuget/
+
+# Rider-specific files
+backend/GrowApp2.0/obj/
+
+# Generated files
+*.generated.cs
+GeneratedMSBuildEditorConfig.editorconfig
+
+# Secrets & Environment Variables
+secrets.json
+*.env
+
+# Rider / ReSharper
+_ReSharper.Caches/
+*.sln.DotSettings.user
+
+# Logs & Debug
+*.log
+debug/
+*.tlog
+
+# IDE settings
+*.suo
+*.plist
+*.userprefs
+
+# macOS
+.DS_Store
+
+# Other files to ignore
+*.swp
+*.bak
+*.tmp
+
+# Ignore Debugging Files for .NET 8.0
+backend/GrowApp2.0/obj/Debug/
+backend/GrowApp2.0/obj/Debug/net8.0/
+backend/GrowApp2.0/obj/Release/
+backend/GrowApp2.0/obj/Release/net8.0/
+backend/GrowApp2.0/bin/
+
+# Ignore IDE and user-specific settings
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider and ReSharper
+_ReSharper.Caches/
+*.sln.DotSettings.user
+
+# macOS
+.DS_Store
