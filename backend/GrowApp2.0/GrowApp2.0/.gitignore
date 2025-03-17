@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.suo
+*.user
+*.sln.docstates
+
+# rider/Jetbrains
+.idea/
+*.DotSettings.user
+
+*.log
+*.tlog
