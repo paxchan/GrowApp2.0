@@ -28,5 +28,7 @@ namespace GrowApp2._0.Data
         public DateTime created_at { get; set; }
 
         public int frequency { get; set; }
+
+        //testing
     }
 }
