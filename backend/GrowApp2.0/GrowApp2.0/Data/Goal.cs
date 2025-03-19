@@ -29,6 +29,6 @@ namespace GrowApp2._0.Data
 
         public int frequency { get; set; }
 
-        //testing
+        //try2
     }
 }
