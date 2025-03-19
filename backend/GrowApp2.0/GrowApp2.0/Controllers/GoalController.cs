@@ -49,5 +49,21 @@ namespace GrowApp2._0.Controllers
 
             return NoContent();
         }
+
+        //Save the new goal
+        [HttpPost("CreateGoal")]
+        public IActionResult CreateGoal(Goal response)
+        {
+            if (response == null)
+            {
+                return BadRequest("Invalid goal data.");
+            }
+
+            response.created_at = DateTime.Now;
+            _context.Goals.Add(response);
+            _context.SaveChanges();
+            return Ok(response);
+        }
+
     }
 }
