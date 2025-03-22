@@ -7,15 +7,35 @@ function CreateGoal() {
   const [endDate, setEndDate] = useState('');
   const [reason, setReason] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log({
+    const goalData = {
       goalDescription,
       section,
       endDate,
       reason,
-    });
+
+    };
+
+    try {
+      const response = await fetch('https://localhost:5000/api/Goal', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(goalData),
+      });
+
+      if (response.ok) {
+        console.log('Goal created successfully!');
+      } else {
+        console.error('Failed to create goal:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   // SVG components
