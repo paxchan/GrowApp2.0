@@ -7,6 +7,7 @@ function CreateGoal() {
   const [endDate, setEndDate] = useState('');
   const [reason, setReason] = useState('');
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
@@ -15,6 +16,7 @@ function CreateGoal() {
       section,
       endDate,
       reason,
+
     };
 
     try {

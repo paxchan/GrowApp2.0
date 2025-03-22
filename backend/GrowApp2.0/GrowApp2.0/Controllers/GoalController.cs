@@ -21,7 +21,7 @@ namespace GrowApp2._0.Controllers
         }
 
         // PUT: api/Goal/{id}
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public async Task<IActionResult> UpdateGoal(int id, [FromBody] Goal updatedGoal)
         {
             if (id != updatedGoal.goal_id)
