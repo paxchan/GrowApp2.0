@@ -1,0 +1,168 @@
+/* Reset CSS to ensure no white or black frame */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #a8baa2;
+}
+
+/* Ensure the root element also has the background color */
+#root {
+  background-color: #a8baa2;
+  min-height: 100vh;
+}
+
+.goal-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 0 30px 0;
+  margin: 0;
+  background-color: #a8baa2;
+  position: relative;
+  overflow-y: auto;
+}
+
+.goal-header {
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.goal-header h1 {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 48px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0;
+}
+
+.goal-form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+.goal-form {
+  background-color: #d9d9d9;
+  border-radius: 36px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #1e1e1e;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  color: #b3b3b3;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder,
+.form-group textarea::placeholder {
+  color: #b3b3b3;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.select-wrapper,
+.date-wrapper {
+  position: relative;
+}
+
+.select-arrow,
+.date-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.form-group select {
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #333;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .goal-header {
+    padding-top: 80px;
+  }
+
+  .goal-header h1 {
+    font-size: 64px;
+  }
+
+  .goal-form {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .goal-form {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .goal-form {
+    max-width: 700px;
+  }
+}
