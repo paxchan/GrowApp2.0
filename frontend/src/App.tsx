@@ -1,10 +1,10 @@
 import './App.css';
-import CreateGoal from './goal';
+import GoalForm from './goal';
 
 function App() {
   return (
     <>
-      <CreateGoal />
+      <GoalForm />
     </>
   );
 }
