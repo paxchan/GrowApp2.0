@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './logIn.css';
-import logo from './assets/logo.svg';
+import logo from './assets/bd22e7ff9f8c7a28ab7cfad65ed8a671.png';
 
 function LogIn() {
   const [username, setUsername] = useState('');
