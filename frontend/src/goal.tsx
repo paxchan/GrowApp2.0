@@ -117,7 +117,7 @@ const GoalForm: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label>How often is your goal?</label>
+            <label>Which days are you working on your goal?</label>
             <div className="checkbox-group">
               {weekdays.map((day) => (
                 <label key={day}>
