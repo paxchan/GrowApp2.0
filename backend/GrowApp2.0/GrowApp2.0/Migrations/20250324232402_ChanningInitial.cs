@@ -6,11 +6,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowApp2._0.Migrations
 {
     /// <inheritdoc />
-    public partial class Inital : Migration
+    public partial class ChanningInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Goals",
+                columns: table => new
+                {
+                    goal_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    title = table.Column<string>(type: "TEXT", nullable: false),
+                    reason = table.Column<string>(type: "TEXT", nullable: false),
+                    category = table.Column<string>(type: "TEXT", nullable: false),
+                    level = table.Column<int>(type: "INTEGER", nullable: true),
+                    created_at = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Goals", x => x.goal_id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -27,84 +45,6 @@ namespace GrowApp2._0.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Friendships",
-                columns: table => new
-                {
-                    FriendshipId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId1 = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId2 = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Friendships", x => x.FriendshipId);
-                    table.ForeignKey(
-                        name: "FK_Friendships_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Goals",
-                columns: table => new
-                {
-                    goal_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    title = table.Column<string>(type: "TEXT", nullable: false),
-                    reason = table.Column<string>(type: "TEXT", nullable: false),
-                    category = table.Column<string>(type: "TEXT", nullable: false),
-                    level = table.Column<int>(type: "INTEGER", nullable: true),
-                    created_at = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    frequency = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Goals", x => x.goal_id);
-                    table.ForeignKey(
-                        name: "FK_Goals_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Accountabilities",
-                columns: table => new
-                {
-                    accountability_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    goal_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false),
-                    friendship_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    FriendshipId = table.Column<int>(type: "INTEGER", nullable: false),
-                    can_edit = table.Column<bool>(type: "INTEGER", nullable: false),
-                    added_at = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Accountabilities", x => x.accountability_id);
-                    table.ForeignKey(
-                        name: "FK_Accountabilities_Friendships_FriendshipId",
-                        column: x => x.FriendshipId,
-                        principalTable: "Friendships",
-                        principalColumn: "FriendshipId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Accountabilities_Goals_goal_id1",
-                        column: x => x.goal_id1,
-                        principalTable: "Goals",
-                        principalColumn: "goal_id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,6 +91,58 @@ namespace GrowApp2._0.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Friendships",
+                columns: table => new
+                {
+                    FriendshipId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId1 = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId2 = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friendships", x => x.FriendshipId);
+                    table.ForeignKey(
+                        name: "FK_Friendships_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Accountabilities",
+                columns: table => new
+                {
+                    accountability_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    goal_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false),
+                    friendship_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    FriendshipId = table.Column<int>(type: "INTEGER", nullable: false),
+                    can_edit = table.Column<bool>(type: "INTEGER", nullable: false),
+                    added_at = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accountabilities", x => x.accountability_id);
+                    table.ForeignKey(
+                        name: "FK_Accountabilities_Friendships_FriendshipId",
+                        column: x => x.FriendshipId,
+                        principalTable: "Friendships",
+                        principalColumn: "FriendshipId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Accountabilities_Goals_goal_id1",
+                        column: x => x.goal_id1,
+                        principalTable: "Goals",
+                        principalColumn: "goal_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accountabilities_FriendshipId",
                 table: "Accountabilities",
@@ -165,11 +157,6 @@ namespace GrowApp2._0.Migrations
                 name: "IX_Friendships_UserId1",
                 table: "Friendships",
                 column: "UserId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Goals_UserId",
-                table: "Goals",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_goal_id1",

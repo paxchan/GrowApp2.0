@@ -1,20 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using GrowApp2._0.Data;
 
-namespace GrowApp2._0.Data
+public class Weekday
 {
-    public class Weekday
-    {
-        [Key]
-        public int WeekdayId { get; set; }
+    [Key]
+    public int WeekdayId { get; set; }
 
-        [Required]
-        public int GoalId { get; set; }
+    public int GoalId { get; set; }
 
-        [ForeignKey("GoalId")]
-        public Goal Goal { get; set; }
+    [ForeignKey("GoalId")]
+    [JsonIgnore]  // Prevents infinite loop on JSON serialization
+    public Goal? Goal { get; set; }
 
-        [Required]
-        public string DayName { get; set; }  // e.g., "Monday", "Wednesday"
-    }
+    public string DayName { get; set; }
 }

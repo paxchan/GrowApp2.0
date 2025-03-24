@@ -48,18 +48,33 @@ namespace GrowApp2._0.Controllers
 
         // POST: api/Goal
         [HttpPost]
-        public async Task<ActionResult<Goal>> CreateGoal([FromBody] Goal response)
+        public async Task<IActionResult> CreateGoal([FromBody] Goal goal)
         {
-            if (response == null)
-            {
-                return BadRequest("Invalid goal data.");
-            }
+            if (goal == null)
+                return BadRequest("Invalid data.");
 
-            response.created_at = DateTime.UtcNow;
-            _context.Goals.Add(response);
+            goal.created_at = DateTime.UtcNow;
+
+            // Temporarily extract the weekdays
+            var weekdays = goal.Weekdays?.ToList();
+            goal.Weekdays = new List<Weekday>();
+
+            // Save goal first
+            _context.Goals.Add(goal);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetGoal), new { id = response.goal_id }, response);
+            // Add weekdays and associate with the newly created goal
+            if (weekdays != null)
+            {
+                foreach (var day in weekdays)
+                {
+                    day.GoalId = goal.goal_id;
+                    _context.Weekdays.Add(day);
+                }
+                await _context.SaveChangesAsync();
+            }
+
+            return CreatedAtAction(nameof(GetGoal), new { id = goal.goal_id }, goal);
         }
 
         // PUT: api/Goal/{id}
@@ -85,7 +100,6 @@ namespace GrowApp2._0.Controllers
             goal.reason = updatedGoal.reason;
             goal.category = updatedGoal.category;
             goal.level = updatedGoal.level;
-            goal.frequency = updatedGoal.frequency;
 
             // If you want to replace weekdays:
             if (updatedGoal.Weekdays != null)
