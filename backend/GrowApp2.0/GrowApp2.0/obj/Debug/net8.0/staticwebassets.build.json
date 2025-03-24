@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "ucsEaeJ+Wved19UujWjDdllfcoJ6s6jSdDNlFmyCMVg=",
+  "Hash": "OFm43UsKcHhUmtI3iht7bR+Elb8DpUIcN6cgyWLUZXo=",
   "Source": "GrowApp2.0",
   "BasePath": "_content/GrowApp2.0",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
