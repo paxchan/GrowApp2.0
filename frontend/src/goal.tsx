@@ -2,25 +2,23 @@ import React, { useState } from 'react';
 import './goal.css';
 
 const GoalForm: React.FC = () => {
-  const [goalDescription, setGoalDescription] = useState('');
+  const [goalTitle, setGoalTitle] = useState('');
   const [section, setSection] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [frequency, setFrequency] = useState('');
   const [reason, setReason] = useState('');
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
     const goalData = {
-      goalDescription,
+      goalTitle,
       section,
-      endDate,
       reason,
-
+      frequency,
     };
 
     try {
-      const response = await fetch('https://localhost:5000/api/Goal', {
+      const response = await fetch('https://localhost:5000/Goal/CreateGoal', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,8 +49,8 @@ const GoalForm: React.FC = () => {
               type="text"
               id="goalDescription"
               placeholder="Describe"
-              value={goalDescription}
-              onChange={(e) => setGoalDescription(e.target.value)}
+              value={goalTitle}
+              onChange={(e) => setGoalTitle(e.target.value)}
             />
           </div>
 
@@ -68,45 +66,11 @@ const GoalForm: React.FC = () => {
                   Select an option below
                 </option>
                 <option value="physical">Physical</option>
-                <option value="mental">Mental</option>
+                <option value="mental">Intellectual</option>
                 <option value="social">Social</option>
-                <option value="financial">Financial</option>
+                <option value="financial">Spiritual</option>
               </select>
               <div className="select-arrow">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 6L8 10L12 6"
-                    stroke="#1E1E1E"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="endDate">End date</label>
-            <div className="date-wrapper">
-              <input
-                type="text"
-                id="endDate"
-                placeholder="MM/DD/YYYY"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                onFocus={(e) => (e.target.type = 'date')}
-                onBlur={(e) => {
-                  if (!e.target.value) e.target.type = 'text';
-                }}
-              />
-              <div className="date-arrow">
                 <svg
                   width="16"
                   height="16"
@@ -134,6 +98,17 @@ const GoalForm: React.FC = () => {
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             ></textarea>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="frequency">How often is your goal?</label>
+            <input
+              type="text"
+              id="frequency"
+              placeholder="How often do you want to do this goal?"
+              value={frequency}
+              onChange={(e) => setFrequency(e.target.value)}
+            />
           </div>
 
           <div className="form-group button-container">
