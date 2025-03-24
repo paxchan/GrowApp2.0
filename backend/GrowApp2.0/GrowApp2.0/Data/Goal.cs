@@ -26,6 +26,8 @@ namespace GrowApp2._0.Data
         public DateTime? created_at { get; set; }
 
         public int frequency { get; set; }
+        
+        public ICollection<Weekday> Weekdays { get; set; } = new List<Weekday>();
 
         //try2
     }
