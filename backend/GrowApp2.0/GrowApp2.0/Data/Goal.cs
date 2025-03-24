@@ -16,16 +16,14 @@ namespace GrowApp2._0.Data
 
         [Required]
         public string title { get; set; }
-        public string description { get; set; }
 
-        public DateTime start_date { get; set; }
-        public DateTime end_date { get; set; }
+        public string reason { get; set; }
 
-        public string status { get; set; }
+        public string category { get; set; }
 
-        public bool visibility { get; set; }
+        public int? level { get; set; }
 
-        public DateTime created_at { get; set; }
+        public DateTime? created_at { get; set; }
 
         public int frequency { get; set; }
 
