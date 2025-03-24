@@ -6,8 +6,6 @@ import socialImage from '../assets/images/social.jpg';
 import physicalImage from '../assets/images/physical.jpg';
 import spiritualImage from '../assets/images/spiritual.jpg';
 import intellectualImage from '../assets/images/intellectual.jpg';
-import menuBarImage from '../assets/images/menu-bar.jpg';
-
 
 
 const Garden: React.FC = () => {
