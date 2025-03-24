@@ -2,19 +2,35 @@ import React, { useState } from 'react';
 import './goal.css';
 
 const GoalForm: React.FC = () => {
-  const [goalTitle, setGoalTitle] = useState('');
-  const [section, setSection] = useState('');
-  const [frequency, setFrequency] = useState('');
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [reason, setReason] = useState('');
+
+  const weekdays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
+  const handleDaySelection = (day: string) => {
+    setSelectedDays((prev) =>
+      prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
+    );
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
     const goalData = {
-      goalTitle,
-      section,
+      title,
+      category,
       reason,
-      frequency,
+      weekdays: selectedDays.map((day) => ({ dayName: day })),
     };
 
     try {
@@ -44,31 +60,31 @@ const GoalForm: React.FC = () => {
       <div className="goal-form-container">
         <form className="goal-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="goalDescription">What is your goal?</label>
+            <label htmlFor="title">What is your goal?</label>
             <input
               type="text"
-              id="goalDescription"
+              id="title"
               placeholder="Describe"
-              value={goalTitle}
-              onChange={(e) => setGoalTitle(e.target.value)}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="section">Section?</label>
+            <label htmlFor="section">Category?</label>
             <div className="select-wrapper">
               <select
                 id="section"
-                value={section}
-                onChange={(e) => setSection(e.target.value)}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="" disabled selected>
                   Select an option below
                 </option>
                 <option value="physical">Physical</option>
-                <option value="mental">Intellectual</option>
+                <option value="intellectual">Intellectual</option>
                 <option value="social">Social</option>
-                <option value="financial">Spiritual</option>
+                <option value="spiritual">Spiritual</option>
               </select>
               <div className="select-arrow">
                 <svg
@@ -101,14 +117,20 @@ const GoalForm: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="frequency">How often is your goal?</label>
-            <input
-              type="text"
-              id="frequency"
-              placeholder="How often do you want to do this goal?"
-              value={frequency}
-              onChange={(e) => setFrequency(e.target.value)}
-            />
+            <label>Which days are you working on your goal?</label>
+            <div className="checkbox-group">
+              {weekdays.map((day) => (
+                <label key={day}>
+                  <input
+                    type="checkbox"
+                    value={day}
+                    checked={selectedDays.includes(day)}
+                    onChange={() => handleDaySelection(day)}
+                  />
+                  {day}
+                </label>
+              ))}
+            </div>
           </div>
 
           <div className="form-group button-container">
