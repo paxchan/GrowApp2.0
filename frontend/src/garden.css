@@ -1,0 +1,243 @@
+.garden-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #a8baa2;
+  overflow-x: hidden;
+  padding: 0 20px;
+  position: relative;
+}
+
+.garden-title {
+  color: #000;
+  font-size: 64px;
+  font-family: 'Lilita One', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 52px;
+  line-height: 1.1;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+}
+
+.column-layout {
+  grid-template-columns: 1fr;
+}
+
+.goal-circle {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #d9d9d9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.goal-circle:hover {
+  transform: scale(1.05);
+}
+
+/* CHAT GAVE ME THIS */
+.goal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the circle */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.goal-text {
+  font-family: 'Hannari', serif;
+  font-size: 17px;
+  color: #000;
+  text-align: center;
+}
+
+.goal-circle.social {
+  width: 166px;
+  height: 165px;
+}
+
+.goal-circle.social .goal-text {
+  letter-spacing: 0.17em;
+}
+
+.goal-circle.physical {
+  width: 170px;
+  height: 166px;
+}
+
+.goal-circle.physical .goal-text {
+  letter-spacing: 8px;
+}
+
+.goal-circle.spiritual {
+  width: 159px;
+  height: 160px;
+}
+
+.goal-circle.spiritual .goal-text {
+  letter-spacing: 8px;
+}
+
+.goal-circle.intellectual {
+  width: 159px;
+  height: 160px;
+}
+
+.goal-circle.intellectual .goal-text {
+  letter-spacing: 0.15em;
+}
+
+.create-goal-button {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  width: 220px;
+  height: 46px;
+  padding: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.create-goal-button:hover {
+  background-color: #c9c9c9;
+}
+
+.menu-bar-placeholder {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .garden-title {
+    font-size: 48px;
+    margin-top: 40px;
+  }
+
+  .goals-grid {
+    gap: 12px;
+  }
+
+  .goal-circle.social,
+  .goal-circle.physical,
+  .goal-circle.spiritual,
+  .goal-circle.intellectual {
+    width: 140px;
+    height: 140px;
+  }
+
+  .goal-text {
+    font-size: 15px;
+  }
+
+  .create-goal-button {
+    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .garden-title {
+    font-size: 40px;
+    margin-top: 30px;
+  }
+
+  .goals-grid {
+    gap: 10px;
+  }
+
+  .goal-circle.social,
+  .goal-circle.physical,
+  .goal-circle.spiritual,
+  .goal-circle.intellectual {
+    width: 120px;
+    height: 120px;
+  }
+
+  .goal-text {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .create-goal-button {
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .garden-title {
+    font-size: 36px;
+    margin-top: 20px;
+  }
+
+  .goal-circle.social,
+  .goal-circle.physical,
+  .goal-circle.spiritual,
+  .goal-circle.intellectual {
+    width: 100px;
+    height: 100px;
+  }
+
+  .goal-text {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .create-goal-button {
+    width: 160px;
+    height: 36px;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Portrait orientation specific adjustments */
+@media (max-height: 700px) {
+  .garden-title {
+    margin-top: 20px;
+  }
+
+  .goals-grid {
+    margin-top: 20px;
+  }
+
+  .create-goal-button {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
