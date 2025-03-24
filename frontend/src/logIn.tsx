@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './logIn.css';
 import logo from './assets/bd22e7ff9f8c7a28ab7cfad65ed8a671.png';
+import { Link } from 'react-router-dom';
 
 function LogIn() {
   const [username, setUsername] = useState('');
@@ -10,11 +11,6 @@ function LogIn() {
     e.preventDefault();
     // Handle login logic here
     console.log('Login attempt with:', username, password);
-  };
-
-  const handleSignUp = () => {
-    // Handle navigation to sign up page
-    console.log('Navigate to sign up page');
   };
 
   return (
@@ -82,7 +78,7 @@ function LogIn() {
             </button>
             <div className="signup-link">
               <span>Don't have an account? </span>
-              <a onClick={handleSignUp}>Sign up</a>
+              <Link to="/signup">Sign up</Link>
             </div>
           </form>
         </div>

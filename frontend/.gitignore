@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .NET build artifacts
+*.dll
+*.pdb
+*.exe
+*.cache
+*.props
+*.targets
+
+# User-specific files
+*.user
+*.vspscc
+
+# VS Code SQLite temporary files
+*.sqlite-shm
+*.sqlite-wal
+
+# Build output folders
+bin/
+obj/

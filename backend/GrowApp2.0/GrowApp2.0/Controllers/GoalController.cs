@@ -65,5 +65,20 @@ namespace GrowApp2._0.Controllers
             return Ok(response);
         }
 
+        // DELETE: api/Goal/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGoal(int id)
+        {
+            var goal = await _context.Goals.FindAsync(id);
+            if (goal == null)
+            {
+                return NotFound("Goal not found");
+            }
+
+            _context.Goals.Remove(goal);
+            await _context.SaveChangesAsync();
+            return Ok("Goal deleted successfully");
+        }
+
     }
 }
