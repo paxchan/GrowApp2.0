@@ -82,18 +82,12 @@ namespace GrowApp2._0.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("category")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("created_at")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("frequency")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("level")
                         .HasColumnType("INTEGER");
@@ -110,8 +104,6 @@ namespace GrowApp2._0.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("goal_id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Goals");
                 });
@@ -183,7 +175,7 @@ namespace GrowApp2._0.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("GrowApp2._0.Data.Weekday", b =>
+            modelBuilder.Entity("Weekday", b =>
                 {
                     b.Property<int>("WeekdayId")
                         .ValueGeneratedOnAdd()
@@ -233,17 +225,6 @@ namespace GrowApp2._0.Migrations
                     b.Navigation("User1");
                 });
 
-            modelBuilder.Entity("GrowApp2._0.Data.Goal", b =>
-                {
-                    b.HasOne("GrowApp2._0.Data.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("GrowApp2._0.Data.Post", b =>
                 {
                     b.HasOne("GrowApp2._0.Data.Goal", "Goal")
@@ -255,7 +236,7 @@ namespace GrowApp2._0.Migrations
                     b.Navigation("Goal");
                 });
 
-            modelBuilder.Entity("GrowApp2._0.Data.Weekday", b =>
+            modelBuilder.Entity("Weekday", b =>
                 {
                     b.HasOne("GrowApp2._0.Data.Goal", "Goal")
                         .WithMany("Weekdays")
