@@ -11,48 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrowApp2._0.Migrations
 {
     [DbContext(typeof(GrowDbContext))]
-    [Migration("20250317161530_Initial")]
-    partial class Initial
+    [Migration("20250324224236_Inital")]
+    partial class Inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.13");
-
-            modelBuilder.Entity("GrowApp.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProfilePhoto")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-                });
 
             modelBuilder.Entity("GrowApp2._0.Data.Accountability", b =>
                 {
@@ -122,23 +88,20 @@ namespace GrowApp2._0.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("description")
+                    b.Property<string>("category")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("end_date")
+                    b.Property<DateTime?>("created_at")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("frequency")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("start_date")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("level")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("status")
+                    b.Property<string>("reason")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -147,9 +110,6 @@ namespace GrowApp2._0.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("user_id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("visibility")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("goal_id");
@@ -192,6 +152,60 @@ namespace GrowApp2._0.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("GrowApp2._0.Data.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProfilePhoto")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("GrowApp2._0.Data.Weekday", b =>
+                {
+                    b.Property<int>("WeekdayId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DayName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("GoalId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("WeekdayId");
+
+                    b.HasIndex("GoalId");
+
+                    b.ToTable("Weekdays");
+                });
+
             modelBuilder.Entity("GrowApp2._0.Data.Accountability", b =>
                 {
                     b.HasOne("GrowApp2._0.Data.Friendship", "Friendship")
@@ -213,7 +227,7 @@ namespace GrowApp2._0.Migrations
 
             modelBuilder.Entity("GrowApp2._0.Data.Friendship", b =>
                 {
-                    b.HasOne("GrowApp.Models.User", "User1")
+                    b.HasOne("GrowApp2._0.Data.User", "User1")
                         .WithMany("Friendships")
                         .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -224,7 +238,7 @@ namespace GrowApp2._0.Migrations
 
             modelBuilder.Entity("GrowApp2._0.Data.Goal", b =>
                 {
-                    b.HasOne("GrowApp.Models.User", "User")
+                    b.HasOne("GrowApp2._0.Data.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -244,7 +258,23 @@ namespace GrowApp2._0.Migrations
                     b.Navigation("Goal");
                 });
 
-            modelBuilder.Entity("GrowApp.Models.User", b =>
+            modelBuilder.Entity("GrowApp2._0.Data.Weekday", b =>
+                {
+                    b.HasOne("GrowApp2._0.Data.Goal", "Goal")
+                        .WithMany("Weekdays")
+                        .HasForeignKey("GoalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Goal");
+                });
+
+            modelBuilder.Entity("GrowApp2._0.Data.Goal", b =>
+                {
+                    b.Navigation("Weekdays");
+                });
+
+            modelBuilder.Entity("GrowApp2._0.Data.User", b =>
                 {
                     b.Navigation("Friendships");
                 });

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowApp2._0.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,12 +60,10 @@ namespace GrowApp2._0.Migrations
                     user_id = table.Column<int>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     title = table.Column<string>(type: "TEXT", nullable: false),
-                    description = table.Column<string>(type: "TEXT", nullable: false),
-                    start_date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    end_date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    status = table.Column<string>(type: "TEXT", nullable: false),
-                    visibility = table.Column<bool>(type: "INTEGER", nullable: false),
-                    created_at = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    reason = table.Column<string>(type: "TEXT", nullable: false),
+                    category = table.Column<string>(type: "TEXT", nullable: false),
+                    level = table.Column<int>(type: "INTEGER", nullable: true),
+                    created_at = table.Column<DateTime>(type: "TEXT", nullable: true),
                     frequency = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -133,6 +131,26 @@ namespace GrowApp2._0.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Weekdays",
+                columns: table => new
+                {
+                    WeekdayId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GoalId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DayName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Weekdays", x => x.WeekdayId);
+                    table.ForeignKey(
+                        name: "FK_Weekdays_Goals_GoalId",
+                        column: x => x.GoalId,
+                        principalTable: "Goals",
+                        principalColumn: "goal_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accountabilities_FriendshipId",
                 table: "Accountabilities",
@@ -157,6 +175,11 @@ namespace GrowApp2._0.Migrations
                 name: "IX_Posts_goal_id1",
                 table: "Posts",
                 column: "goal_id1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Weekdays_GoalId",
+                table: "Weekdays",
+                column: "GoalId");
         }
 
         /// <inheritdoc />
@@ -167,6 +190,9 @@ namespace GrowApp2._0.Migrations
 
             migrationBuilder.DropTable(
                 name: "Posts");
+
+            migrationBuilder.DropTable(
+                name: "Weekdays");
 
             migrationBuilder.DropTable(
                 name: "Friendships");
