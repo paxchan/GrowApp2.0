@@ -6,11 +6,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowApp2._0.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class ChanningInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Goals",
+                columns: table => new
+                {
+                    goal_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    title = table.Column<string>(type: "TEXT", nullable: false),
+                    reason = table.Column<string>(type: "TEXT", nullable: false),
+                    category = table.Column<string>(type: "TEXT", nullable: false),
+                    level = table.Column<int>(type: "INTEGER", nullable: true),
+                    created_at = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Goals", x => x.goal_id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -30,6 +48,50 @@ namespace GrowApp2._0.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    post_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    photo = table.Column<string>(type: "TEXT", nullable: false),
+                    caption = table.Column<string>(type: "TEXT", nullable: false),
+                    posted_at = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    goal_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.post_id);
+                    table.ForeignKey(
+                        name: "FK_Posts_Goals_goal_id1",
+                        column: x => x.goal_id1,
+                        principalTable: "Goals",
+                        principalColumn: "goal_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Weekdays",
+                columns: table => new
+                {
+                    WeekdayId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GoalId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DayName = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Weekdays", x => x.WeekdayId);
+                    table.ForeignKey(
+                        name: "FK_Weekdays_Goals_GoalId",
+                        column: x => x.GoalId,
+                        principalTable: "Goals",
+                        principalColumn: "goal_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Friendships",
                 columns: table => new
                 {
@@ -46,34 +108,6 @@ namespace GrowApp2._0.Migrations
                     table.ForeignKey(
                         name: "FK_Friendships_Users_UserId1",
                         column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Goals",
-                columns: table => new
-                {
-                    goal_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    title = table.Column<string>(type: "TEXT", nullable: false),
-                    description = table.Column<string>(type: "TEXT", nullable: false),
-                    start_date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    end_date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    status = table.Column<string>(type: "TEXT", nullable: false),
-                    visibility = table.Column<bool>(type: "INTEGER", nullable: false),
-                    created_at = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    frequency = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Goals", x => x.goal_id);
-                    table.ForeignKey(
-                        name: "FK_Goals_Users_UserId",
-                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
@@ -109,30 +143,6 @@ namespace GrowApp2._0.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Posts",
-                columns: table => new
-                {
-                    post_id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    user_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    photo = table.Column<string>(type: "TEXT", nullable: false),
-                    caption = table.Column<string>(type: "TEXT", nullable: false),
-                    posted_at = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    goal_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Posts", x => x.post_id);
-                    table.ForeignKey(
-                        name: "FK_Posts_Goals_goal_id1",
-                        column: x => x.goal_id1,
-                        principalTable: "Goals",
-                        principalColumn: "goal_id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Accountabilities_FriendshipId",
                 table: "Accountabilities",
@@ -149,14 +159,14 @@ namespace GrowApp2._0.Migrations
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Goals_UserId",
-                table: "Goals",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Posts_goal_id1",
                 table: "Posts",
                 column: "goal_id1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Weekdays_GoalId",
+                table: "Weekdays",
+                column: "GoalId");
         }
 
         /// <inheritdoc />
@@ -167,6 +177,9 @@ namespace GrowApp2._0.Migrations
 
             migrationBuilder.DropTable(
                 name: "Posts");
+
+            migrationBuilder.DropTable(
+                name: "Weekdays");
 
             migrationBuilder.DropTable(
                 name: "Friendships");

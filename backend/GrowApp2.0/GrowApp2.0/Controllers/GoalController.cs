@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using GrowApp2._0.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace GrowApp2._0.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
     public class GoalController : ControllerBase
@@ -20,65 +19,122 @@ namespace GrowApp2._0.Controllers
             _context = context;
         }
 
+        // GET: api/Goal
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Goal>>> GetAllGoals()
+        {
+            var goals = await _context.Goals
+                .Include(g => g.Weekdays)
+                .ToListAsync();
+
+            return Ok(goals);
+        }
+
+        // GET: api/Goal/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Goal>> GetGoal(int id)
+        {
+            var goal = await _context.Goals
+                .Include(g => g.Weekdays)
+                .FirstOrDefaultAsync(g => g.goal_id == id);
+
+            if (goal == null)
+            {
+                return NotFound("Goal not found.");
+            }
+
+            return Ok(goal);
+        }
+
+        // POST: api/Goal
+        [HttpPost]
+        public async Task<IActionResult> CreateGoal([FromBody] Goal goal)
+        {
+            if (goal == null)
+                return BadRequest("Invalid data.");
+
+            goal.created_at = DateTime.UtcNow;
+
+            // Temporarily extract the weekdays
+            var weekdays = goal.Weekdays?.ToList();
+            goal.Weekdays = new List<Weekday>();
+
+            // Save goal first
+            _context.Goals.Add(goal);
+            await _context.SaveChangesAsync();
+
+            // Add weekdays and associate with the newly created goal
+            if (weekdays != null)
+            {
+                foreach (var day in weekdays)
+                {
+                    day.GoalId = goal.goal_id;
+                    _context.Weekdays.Add(day);
+                }
+                await _context.SaveChangesAsync();
+            }
+
+            return CreatedAtAction(nameof(GetGoal), new { id = goal.goal_id }, goal);
+        }
+
         // PUT: api/Goal/{id}
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGoal(int id, [FromBody] Goal updatedGoal)
         {
             if (id != updatedGoal.goal_id)
             {
-                return BadRequest("Goal ID mismatch");
+                return BadRequest("Goal ID mismatch.");
             }
 
-            var goal = await _context.Goals.FindAsync(id);
+            var goal = await _context.Goals
+                .Include(g => g.Weekdays)
+                .FirstOrDefaultAsync(g => g.goal_id == id);
+
             if (goal == null)
             {
-                return NotFound("Goal not found");
+                return NotFound("Goal not found.");
             }
 
-            // Update goal properties
+            // Update properties
             goal.title = updatedGoal.title;
-            goal.description = updatedGoal.description;
-            goal.start_date = updatedGoal.start_date;
-            goal.end_date = updatedGoal.end_date;
-            goal.status = updatedGoal.status;
-            goal.visibility = updatedGoal.visibility;
-            goal.frequency = updatedGoal.frequency;
+            goal.reason = updatedGoal.reason;
+            goal.category = updatedGoal.category;
+            goal.level = updatedGoal.level;
 
-            _context.Goals.Update(goal);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        //Save the new goal
-        [HttpPost("CreateGoal")]
-        public IActionResult CreateGoal([FromBody] Goal response)
-        {
-            if (response == null)
+            // If you want to replace weekdays:
+            if (updatedGoal.Weekdays != null)
             {
-                return BadRequest("Invalid goal data.");
+                goal.Weekdays.Clear();
+                foreach (var weekday in updatedGoal.Weekdays)
+                {
+                    goal.Weekdays.Add(new Weekday
+                    {
+                        DayName = weekday.DayName,
+                        GoalId = goal.goal_id
+                    });
+                }
             }
 
-            response.created_at = DateTime.UtcNow;
-            _context.Goals.Add(response);
-            _context.SaveChanges();
-            return Ok(response);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
 
         // DELETE: api/Goal/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGoal(int id)
         {
-            var goal = await _context.Goals.FindAsync(id);
+            var goal = await _context.Goals
+                .Include(g => g.Weekdays)
+                .FirstOrDefaultAsync(g => g.goal_id == id);
+
             if (goal == null)
             {
-                return NotFound("Goal not found");
+                return NotFound("Goal not found.");
             }
 
             _context.Goals.Remove(goal);
             await _context.SaveChangesAsync();
-            return Ok("Goal deleted successfully");
+            return Ok("Goal deleted successfully.");
         }
-
     }
 }
