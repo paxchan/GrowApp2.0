@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './logIn.css';
 import logo from './assets/bd22e7ff9f8c7a28ab7cfad65ed8a671.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function LogIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +75,7 @@ function LogIn() {
                 />
               </div>
             </div>
-            <button type="submit" className="login-button">
+            <button type="submit" className="login-button" onClick={() => navigate('/garden')}>
               Log In
             </button>
             <div className="signup-link">

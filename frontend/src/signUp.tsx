@@ -2,12 +2,15 @@ import { useState } from 'react';
 import './logIn.css'; // reuse same styles for now
 import logo from './assets/bd22e7ff9f8c7a28ab7cfad65ed8a671.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,7 +92,7 @@ function SignUp() {
               </div>
             </div>
 
-            <button type="submit" className="login-button">
+            <button type="submit" className="login-button" onClick={() => navigate('/')}>
               Sign Up
             </button>
 

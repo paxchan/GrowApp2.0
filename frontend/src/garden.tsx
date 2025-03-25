@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './garden.css';
+import { useNavigate } from 'react-router-dom';
 
 // Placeholder images - these would be replaced with actual images in production
-import socialImage from '../assets/images/social.jpg';
-import physicalImage from '../assets/images/physical.jpg';
-import spiritualImage from '../assets/images/spiritual.jpg';
-import intellectualImage from '../assets/images/intellectual.jpg';
+// import socialImage from '../assets/images/social.jpg';
+// import physicalImage from '../assets/images/physical.jpg';
+// import spiritualImage from '../assets/images/spiritual.jpg';
+// import intellectualImage from '../assets/images/intellectual.jpg';
 
 
 const Garden: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const navigate = useNavigate();
 
   // Add window resize listener for responsive adjustments
   useEffect(() => {
@@ -19,6 +21,7 @@ const Garden: React.FC = () => {
       setWindowHeight(window.innerHeight);
     };
 
+    
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -26,10 +29,10 @@ const Garden: React.FC = () => {
   }, []);
 
   // Function to handle creating a new goal
-  const handleCreateGoal = () => {
-    console.log('Create new goal clicked');
-    // Implementation for creating a new goal would go here
-  };
+  // const handleCreateGoal = () => {
+  //   console.log('Create new goal clicked');
+  //   // Implementation for creating a new goal would go here
+  // };
 
   // Function to handle clicking on a goal category
   const handleGoalClick = (category: string) => {
@@ -54,7 +57,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Social Goals"
         >
-          <img src={socialImage} alt="Social Goal" className="goal-image" />
+          {/* <img src={socialImage} alt="Social Goal" className="goal-image" /> */}
           <div className="goal-text">SOCIAL</div>
         </div>
 
@@ -65,7 +68,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Physical Goals"
         >
-          <img src={physicalImage} alt="Physical Goal" className="goal-image" />
+          {/* <img src={physicalImage} alt="Physical Goal" className="goal-image" /> */}
           <div className="goal-text">PHYSICAL</div>
         </div>
 
@@ -76,7 +79,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Spiritual Goals"
         >
-          <img src={spiritualImage} alt="Spiritual Goal" className="goal-image" />
+          {/* <img src={spiritualImage} alt="Spiritual Goal" className="goal-image" /> */}
           <div className="goal-text">SPIRITUAL</div>
         </div>
 
@@ -87,23 +90,23 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Intellectual Goals"
         >
-          <img src={intellectualImage} alt="Intellectual Goal" className="goal-image" />
+          {/* <img src={intellectualImage} alt="Intellectual Goal" className="goal-image" /> */}
           <div className="goal-text">INTELLECTUAL</div>
         </div>
       </div>
 
       {/* Create New Goal Button */}
-      <button className="create-goal-button" onClick={handleCreateGoal}>
+      <button className="create-goal-button" onClick={() => navigate('/goal')}>
         Create a new goal
       </button>
 
       {/* Menu Bar Placeholder - The actual MenuBar is rendered in App.tsx */}
       <div className="menu-bar-placeholder">
-        <img
+        {/* <img
           src={placeholderImages.menuBar}
           alt="Menu Bar"
           style={{ width: '100%', objectFit: 'contain' }}
-        />
+        /> */}
       </div>
     </div>
   );

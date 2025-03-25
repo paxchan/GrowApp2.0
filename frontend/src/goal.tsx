@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './goal.css';
 
 const GoalForm: React.FC = () => {
@@ -6,6 +7,7 @@ const GoalForm: React.FC = () => {
   const [section, setSection] = useState('');
   const [frequency, setFrequency] = useState('');
   const [reason, setReason] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +114,7 @@ const GoalForm: React.FC = () => {
           </div>
 
           <div className="form-group button-container">
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" onClick={() => navigate('/garden')}>
               Make Goal
             </button>
           </div>
