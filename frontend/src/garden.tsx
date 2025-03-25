@@ -3,11 +3,10 @@ import './garden.css';
 import { useNavigate } from 'react-router-dom';
 
 // Placeholder images - these would be replaced with actual images in production
-// import socialImage from '../assets/images/social.jpg';
-// import physicalImage from '../assets/images/physical.jpg';
-// import spiritualImage from '../assets/images/spiritual.jpg';
-// import intellectualImage from '../assets/images/intellectual.jpg';
-
+import socialImage from './assets/intellectual.png';
+import physicalImage from './assets/intellectual.png';
+import spiritualImage from './assets/intellectual.png';
+import intellectualImage from './assets/intellectual.png';
 
 const Garden: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -103,7 +102,6 @@ const Garden: React.FC = () => {
       {/* Menu Bar Placeholder - The actual MenuBar is rendered in App.tsx */}
       <div className="menu-bar-placeholder">
         {/* <img
-          src={placeholderImages.menuBar}
           alt="Menu Bar"
           style={{ width: '100%', objectFit: 'contain' }}
         /> */}
