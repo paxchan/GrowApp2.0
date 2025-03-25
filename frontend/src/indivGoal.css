@@ -154,3 +154,29 @@
     }
   }
   
+  .goal-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .delete-goal-button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-goal-button:hover {
+    background-color: #ff6b81;
+  }
+  
+  .delete-goal-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
