@@ -6,15 +6,14 @@ const MenuBar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div className="menu-bar">
+      {/* Home (Garden) */}
       <div
-        className={`menu-item ${isActive('/profile') ? 'active' : ''}`}
-        onClick={() => navigate('/profile')}
+        className={`menu-item ${isActive('/garden') ? 'active' : ''}`}
+        onClick={() => navigate('/garden')}
       >
         <svg
           width="20"
@@ -23,31 +22,20 @@ const MenuBar: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clipPath="url(#clip0_463_10)">
-            <path
-              d="M14.6667 18.0128V16.3462C14.6667 15.4621 14.3155 14.6142 13.6904 13.9891C13.0652 13.364 12.2174 13.0128 11.3333 13.0128H4.66668C3.78262 13.0128 2.93478 13.364 2.30965 13.9891C1.68453 14.6142 1.33334 15.4621 1.33334 16.3462V18.0128M19.6667 18.0128V16.3462C19.6661 15.6076 19.4203 14.8901 18.9678 14.3064C18.5153 13.7227 17.8818 13.3058 17.1667 13.1212M13.8333 3.12115C14.5504 3.30473 15.1859 3.72173 15.6397 4.30641C16.0935 4.89108 16.3399 5.61018 16.3399 6.35032C16.3399 7.09046 16.0935 7.80955 15.6397 8.39423C15.1859 8.9789 14.5504 9.3959 13.8333 9.57948M11.3333 6.34615C11.3333 8.1871 9.84096 9.67948 8.00001 9.67948C6.15906 9.67948 4.66668 8.1871 4.66668 6.34615C4.66668 4.5052 6.15906 3.01282 8.00001 3.01282C9.84096 3.01282 11.3333 4.5052 11.3333 6.34615Z"
-              stroke="#F5F5F5"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_463_10">
-              <rect
-                width="20"
-                height="20"
-                fill="white"
-                transform="translate(0.5 0.512817)"
-              />
-            </clipPath>
-          </defs>
+          <path
+            d="M8 18.8462V10.5128H13V18.8462M3 8.01282L10.5 2.17949L18 8.01282V17.1795C18 17.6215 17.8244 18.0454 17.5118 18.358C17.1993 18.6706 16.7754 18.8462 16.3333 18.8462H4.66667C4.22464 18.8462 3.80072 18.6706 3.48816 18.358C3.17559 18.0454 3 17.6215 3 17.1795V8.01282Z"
+            stroke="#F5F5F5"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
 
+      {/* Sun (Schedule) */}
       <div
-        className={`menu-item ${isActive('/garden') ? 'active' : ''}`}
-        onClick={() => navigate('/garden')}
+        className={`menu-item ${isActive('/schedule') ? 'active' : ''}`}
+        onClick={() => navigate('/schedule')}
       >
         <svg
           width="20"
@@ -78,6 +66,7 @@ const MenuBar: React.FC = () => {
         </svg>
       </div>
 
+      {/* World (Feed) */}
       <div
         className={`menu-item ${isActive('/feed') ? 'active' : ''}`}
         onClick={() => navigate('/feed')}
@@ -99,9 +88,10 @@ const MenuBar: React.FC = () => {
         </svg>
       </div>
 
+      {/* Person (Profile) */}
       <div
-        className={`menu-item ${isActive('/') ? 'active' : ''}`}
-        onClick={() => navigate('/')}
+        className={`menu-item ${isActive('/profile') ? 'active' : ''}`}
+        onClick={() => navigate('/profile')}
       >
         <svg
           width="20"
@@ -110,13 +100,25 @@ const MenuBar: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M8 18.8462V10.5128H13V18.8462M3 8.01282L10.5 2.17949L18 8.01282V17.1795C18 17.6215 17.8244 18.0454 17.5118 18.358C17.1993 18.6706 16.7754 18.8462 16.3333 18.8462H4.66667C4.22464 18.8462 3.80072 18.6706 3.48816 18.358C3.17559 18.0454 3 17.6215 3 17.1795V8.01282Z"
-            stroke="#F5F5F5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <g clipPath="url(#clip0_463_10)">
+            <path
+              d="M14.6667 18.0128V16.3462C14.6667 15.4621 14.3155 14.6142 13.6904 13.9891C13.0652 13.364 12.2174 13.0128 11.3333 13.0128H4.66668C3.78262 13.0128 2.93478 13.364 2.30965 13.9891C1.68453 14.6142 1.33334 15.4621 1.33334 16.3462V18.0128M19.6667 18.0128V16.3462C19.6661 15.6076 19.4203 14.8901 18.9678 14.3064C18.5153 13.7227 17.8818 13.3058 17.1667 13.1212M13.8333 3.12115C14.5504 3.30473 15.1859 3.72173 15.6397 4.30641C16.0935 4.89108 16.3399 5.61018 16.3399 6.35032C16.3399 7.09046 16.0935 7.80955 15.6397 8.39423C15.1859 8.9789 14.5504 9.3959 13.8333 9.57948M11.3333 6.34615C11.3333 8.1871 9.84096 9.67948 8.00001 9.67948C6.15906 9.67948 4.66668 8.1871 4.66668 6.34615C4.66668 4.5052 6.15906 3.01282 8.00001 3.01282C9.84096 3.01282 11.3333 4.5052 11.3333 6.34615Z"
+              stroke="#F5F5F5"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_463_10">
+              <rect
+                width="20"
+                height="20"
+                fill="white"
+                transform="translate(0.5 0.512817)"
+              />
+            </clipPath>
+          </defs>
         </svg>
       </div>
     </div>

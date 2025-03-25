@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 // --- ProfileHeader Component ---
 interface ProfileHeaderProps {
@@ -63,10 +63,10 @@ interface ProfileBioProps {
 function ProfileBio({ text }: ProfileBioProps) {
   return (
     <p className="mt-2 text-xs leading-4 text-black">
-      {text.split("\n").map((line, index) => (
+      {text.split('\n').map((line, index) => (
         <React.Fragment key={index}>
           {line}
-          {index < text.split("\n").length - 1 && <br />}
+          {index < text.split('\n').length - 1 && <br />}
         </React.Fragment>
       ))}
     </p>
@@ -89,19 +89,19 @@ function ProfileActions() {
 function ProfileGrid() {
   const imageUrls = [
     [
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/667f48a8a36d8501d267d2ea4a099c1d296f09d5?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/f662044d32e85d33e144892d8098b3ad317f1c30?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/8ec4b4b9dedbe114a0c99375fa1c940783f0b19e?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/667f48a8a36d8501d267d2ea4a099c1d296f09d5?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/f662044d32e85d33e144892d8098b3ad317f1c30?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/8ec4b4b9dedbe114a0c99375fa1c940783f0b19e?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
     ],
     [
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/dd230feb7cdcc404256a7db296eb2617f3f4668f?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/5f8fda3bc89bf4de41f6e53142e70e5684b57f73?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/0eb1139e520e93eb133ee1b68388dc08f9d401a1?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/dd230feb7cdcc404256a7db296eb2617f3f4668f?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/5f8fda3bc89bf4de41f6e53142e70e5684b57f73?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/0eb1139e520e93eb133ee1b68388dc08f9d401a1?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
     ],
     [
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/5f26c310f1c5ef4a830229390bdd0d9169fd98b4?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/267346ead6e80a442074d179692f3436687c0c83?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/299a7430ac4a23ecc59628ae3f6ee615e12cf305?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296",
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/5f26c310f1c5ef4a830229390bdd0d9169fd98b4?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/267346ead6e80a442074d179692f3436687c0c83?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
+      'https://cdn.builder.io/api/v1/image/assets/TEMP/299a7430ac4a23ecc59628ae3f6ee615e12cf305?placeholderIfAbsent=true&apiKey=2094134670de46e795b62dabdffd0296',
     ],
   ];
 
@@ -110,7 +110,7 @@ function ProfileGrid() {
       {imageUrls.map((row, rowIndex) => (
         <div
           key={`row-${rowIndex}`}
-          className={`flex gap-1 ${rowIndex > 0 ? "mt-3.5" : ""}`}
+          className={`flex gap-1 ${rowIndex > 0 ? 'mt-3.5' : ''}`}
         >
           {row.map((url, colIndex) => (
             <img
