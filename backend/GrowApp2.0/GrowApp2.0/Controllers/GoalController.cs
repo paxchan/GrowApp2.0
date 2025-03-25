@@ -94,8 +94,8 @@ namespace GrowApp2._0.Controllers
             return CreatedAtAction(nameof(GetGoal), new { id = goal.goal_id }, goal);
         }
 
-        // PUT: api/Goal/{id}
-        [HttpPut("{id}")]
+        // POST: api/Goal/{id}
+        [HttpPost("{id}")]
         public async Task<IActionResult> UpdateGoal(int id, [FromBody] Goal updatedGoal)
         {
             if (id != updatedGoal.goal_id)
