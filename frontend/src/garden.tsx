@@ -7,7 +7,6 @@ import physicalImage from './assets/intellectual.png';
 import spiritualImage from './assets/intellectual.png';
 import intellectualImage from './assets/intellectual.png';
 
-
 const Garden: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -54,7 +53,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Social Goals"
         >
-          <img src={socialImage} alt="Social Goal" className="goal-image" />
+          {/* <img src={socialImage} alt="Social Goal" className="goal-image" /> */}
           <div className="goal-text">SOCIAL</div>
         </div>
 
@@ -65,7 +64,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Physical Goals"
         >
-          <img src={physicalImage} alt="Physical Goal" className="goal-image" />
+          {/* <img src={physicalImage} alt="Physical Goal" className="goal-image" /> */}
           <div className="goal-text">PHYSICAL</div>
         </div>
 
@@ -76,7 +75,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Spiritual Goals"
         >
-          <img src={spiritualImage} alt="Spiritual Goal" className="goal-image" />
+          {/* <img src={spiritualImage} alt="Spiritual Goal" className="goal-image" /> */}
           <div className="goal-text">SPIRITUAL</div>
         </div>
 
@@ -87,7 +86,7 @@ const Garden: React.FC = () => {
           role="button"
           aria-label="Intellectual Goals"
         >
-          <img src={intellectualImage} alt="Intellectual Goal" className="goal-image" />
+          {/* <img src={intellectualImage} alt="Intellectual Goal" className="goal-image" /> */}
           <div className="goal-text">INTELLECTUAL</div>
         </div>
       </div>
@@ -99,10 +98,10 @@ const Garden: React.FC = () => {
 
       {/* Menu Bar Placeholder - The actual MenuBar is rendered in App.tsx */}
       <div className="menu-bar-placeholder">
-        <img
+        {/* <img
           alt="Menu Bar"
           style={{ width: '100%', objectFit: 'contain' }}
-        />
+        /> */}
       </div>
     </div>
   );

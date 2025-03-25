@@ -54,16 +54,14 @@ namespace GrowApp2._0.Controllers
                 return BadRequest("Invalid data.");
 
             goal.created_at = DateTime.UtcNow;
+            goal.level = 1; // Set level automatically on creation
 
-            // Temporarily extract the weekdays
             var weekdays = goal.Weekdays?.ToList();
             goal.Weekdays = new List<Weekday>();
 
-            // Save goal first
             _context.Goals.Add(goal);
             await _context.SaveChangesAsync();
 
-            // Add weekdays and associate with the newly created goal
             if (weekdays != null)
             {
                 foreach (var day in weekdays)
