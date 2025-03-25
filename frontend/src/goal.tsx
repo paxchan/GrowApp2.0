@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import './goal.css';
 
 const GoalForm: React.FC = () => {
@@ -27,8 +27,9 @@ const GoalForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
+
     const goalData = {
+      user_id: 1, // 🔥 temporarily hardcoded
       title,
       category,
       reason,
@@ -36,7 +37,7 @@ const GoalForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch('https://localhost:5000/Goal/CreateGoal', {
+      const response = await fetch('/api/Goal', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,6 +47,7 @@ const GoalForm: React.FC = () => {
 
       if (response.ok) {
         console.log('Goal created successfully!');
+        navigate('/garden'); // ✅ Only navigate after success
       } else {
         console.error('Failed to create goal:', response.statusText);
       }
@@ -136,7 +138,7 @@ const GoalForm: React.FC = () => {
           </div>
 
           <div className="form-group button-container">
-            <button type="submit" className="submit-button" onClick={() => navigate('/garden')}>
+            <button type="submit" className="submit-button">
               Make Goal
             </button>
           </div>

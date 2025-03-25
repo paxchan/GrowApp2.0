@@ -23,9 +23,6 @@ namespace GrowApp2._0.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FriendshipId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("added_at")
                         .HasColumnType("TEXT");
 
@@ -38,14 +35,11 @@ namespace GrowApp2._0.Migrations
                     b.Property<int>("goal_id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("goal_id1")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("accountability_id");
 
-                    b.HasIndex("FriendshipId");
+                    b.HasIndex("friendship_id");
 
-                    b.HasIndex("goal_id1");
+                    b.HasIndex("goal_id");
 
                     b.ToTable("Accountabilities");
                 });
@@ -121,9 +115,6 @@ namespace GrowApp2._0.Migrations
                     b.Property<int>("goal_id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("goal_id1")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("photo")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -136,7 +127,7 @@ namespace GrowApp2._0.Migrations
 
                     b.HasKey("post_id");
 
-                    b.HasIndex("goal_id1");
+                    b.HasIndex("goal_id");
 
                     b.ToTable("Posts");
                 });
@@ -199,13 +190,13 @@ namespace GrowApp2._0.Migrations
                 {
                     b.HasOne("GrowApp2._0.Data.Friendship", "Friendship")
                         .WithMany()
-                        .HasForeignKey("FriendshipId")
+                        .HasForeignKey("friendship_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GrowApp2._0.Data.Goal", "Goal")
                         .WithMany()
-                        .HasForeignKey("goal_id1")
+                        .HasForeignKey("goal_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -229,7 +220,7 @@ namespace GrowApp2._0.Migrations
                 {
                     b.HasOne("GrowApp2._0.Data.Goal", "Goal")
                         .WithMany()
-                        .HasForeignKey("goal_id1")
+                        .HasForeignKey("goal_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -9,13 +9,18 @@ namespace GrowApp2._0.Data
         [Key]
         [Required]
         public int post_id { get; set; }
+
         public int user_id { get; set; }
+
         public string photo { get; set; }
+
         public string caption { get; set; }
+
         public DateTime posted_at { get; set; }
 
-        [ForeignKey("goal_id")]
         public int goal_id { get; set; }
+
+        [ForeignKey("goal_id")]
         public Goal Goal { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowApp2._0.Migrations
 {
     /// <inheritdoc />
-    public partial class ChanningInitial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,15 +57,14 @@ namespace GrowApp2._0.Migrations
                     photo = table.Column<string>(type: "TEXT", nullable: false),
                     caption = table.Column<string>(type: "TEXT", nullable: false),
                     posted_at = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    goal_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false)
+                    goal_id = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.post_id);
                     table.ForeignKey(
-                        name: "FK_Posts_Goals_goal_id1",
-                        column: x => x.goal_id1,
+                        name: "FK_Posts_Goals_goal_id",
+                        column: x => x.goal_id,
                         principalTable: "Goals",
                         principalColumn: "goal_id",
                         onDelete: ReferentialAction.Cascade);
@@ -120,9 +119,7 @@ namespace GrowApp2._0.Migrations
                     accountability_id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     goal_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    goal_id1 = table.Column<int>(type: "INTEGER", nullable: false),
                     friendship_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    FriendshipId = table.Column<int>(type: "INTEGER", nullable: false),
                     can_edit = table.Column<bool>(type: "INTEGER", nullable: false),
                     added_at = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -130,28 +127,28 @@ namespace GrowApp2._0.Migrations
                 {
                     table.PrimaryKey("PK_Accountabilities", x => x.accountability_id);
                     table.ForeignKey(
-                        name: "FK_Accountabilities_Friendships_FriendshipId",
-                        column: x => x.FriendshipId,
+                        name: "FK_Accountabilities_Friendships_friendship_id",
+                        column: x => x.friendship_id,
                         principalTable: "Friendships",
                         principalColumn: "FriendshipId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Accountabilities_Goals_goal_id1",
-                        column: x => x.goal_id1,
+                        name: "FK_Accountabilities_Goals_goal_id",
+                        column: x => x.goal_id,
                         principalTable: "Goals",
                         principalColumn: "goal_id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accountabilities_FriendshipId",
+                name: "IX_Accountabilities_friendship_id",
                 table: "Accountabilities",
-                column: "FriendshipId");
+                column: "friendship_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accountabilities_goal_id1",
+                name: "IX_Accountabilities_goal_id",
                 table: "Accountabilities",
-                column: "goal_id1");
+                column: "goal_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Friendships_UserId1",
@@ -159,9 +156,9 @@ namespace GrowApp2._0.Migrations
                 column: "UserId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_goal_id1",
+                name: "IX_Posts_goal_id",
                 table: "Posts",
-                column: "goal_id1");
+                column: "goal_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Weekdays_GoalId",
