@@ -29,6 +29,23 @@ namespace GrowApp2._0.Controllers
 
             return Ok(goals);
         }
+        
+        // GET: api/Goal/category/{category}
+        [HttpGet("category/{category}")]
+        public async Task<ActionResult<IEnumerable<Goal>>> GetGoalsByCategory(string category)
+        {
+            var goals = await _context.Goals
+                .Include(g => g.Weekdays)
+                .Where(g => g.category.ToLower() == category.ToLower())
+                .ToListAsync();
+
+            if (goals == null || goals.Count == 0)
+            {
+                return NotFound("No goals found for this category.");
+            }
+
+            return Ok(goals);
+        }
 
         // GET: api/Goal/{id}
         [HttpGet("{id}")]

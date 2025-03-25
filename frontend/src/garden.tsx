@@ -20,7 +20,6 @@ const Garden: React.FC = () => {
       setWindowHeight(window.innerHeight);
     };
 
-    
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -35,8 +34,7 @@ const Garden: React.FC = () => {
 
   // Function to handle clicking on a goal category
   const handleGoalClick = (category: string) => {
-    console.log(`${category} goal clicked`);
-    // Implementation for navigating to specific goal category would go here
+    navigate(`/goal/${category}`);
   };
 
   // Determine if we should use a column layout for very small screens
