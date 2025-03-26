@@ -1,6 +1,6 @@
 .schedule-container {
   padding: 24px 16px 80px;
-  background-color: #a8baa2
+  background-color: #a8baa2;
   min-height: 100vh;
 }
 
@@ -52,19 +52,19 @@
 
 /* ✅ Category Colors */
 .physical {
-  background-color: #708e6a; /* Green */
+  background-color: #708e6a;
 }
 
 .social {
-  background-color: #708e6a; /* Blue */
+  background-color: #708e6a;
 }
 
 .spiritual {
-  background-color: #708e6a; /* Purple */
+  background-color: #708e6a;
 }
 
 .intellectual {
-  background-color: #708e6a; /* Orange */
+  background-color: #708e6a;
 }
 
 /* ✅ Goal Inner Content */
