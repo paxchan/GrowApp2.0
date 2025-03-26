@@ -11,6 +11,9 @@ import Garden from './garden';
 import GoalForm from './goal';
 import IndivGoal from './indivGoal';
 import EditGoal from './editGoal';
+import Schedule from './schedule';
+import Feed from './feed';
+import Profile from './profile';
 
 // Wrapper component to conditionally render content
 // const AppLayout = () => {
@@ -38,6 +41,9 @@ function App() {
         <Route path="/goal" element={<GoalForm />} />
         <Route path="/goal/:category" element={<IndivGoal />} />
         <Route path="/editGoal/:goalId" element={<EditGoal />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

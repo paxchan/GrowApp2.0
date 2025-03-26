@@ -1,87 +1,95 @@
 import React, { useEffect, useState } from 'react';
-import { addDays, format, startOfToday } from 'date-fns';
+import axios from 'axios';
+import './schedule.css';
+import { format, addDays, startOfToday } from 'date-fns';
+import MenuBar from './menuBar';
 
-type Goal = {
+interface Goal {
   goal_id: number;
   title: string;
-  start_date: string;
-  end_date: string;
-  frequency: number;
-};
+  level: number;
+  category: string;
+  weekdays: { dayName: string }[];
+}
 
-type DaySchedule = {
+interface DayGoalGroup {
   date: Date;
   goals: Goal[];
-};
+}
 
-function Schedule() {
-  const [schedule, setSchedule] = useState<DaySchedule[]>([]);
-  const [goals, setGoals] = useState<Goal[]>([]);
+const Schedule: React.FC = () => {
+  const [allGoals, setAllGoals] = useState<Goal[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [schedule, setSchedule] = useState<DayGoalGroup[]>([]);
 
   useEffect(() => {
-    fetchGoals(); // fetch from your API
+    const fetchGoals = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:5000/api/Goal');
+        setAllGoals(response.data);
+      } catch (err) {
+        setError('Could not load goals.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchGoals();
   }, []);
 
   useEffect(() => {
-    if (goals.length > 0) {
-      const mappedSchedule = mapGoalsToSchedule(goals);
-      setSchedule(mappedSchedule);
-    }
-  }, [goals]);
-
-  const fetchGoals = async () => {
-    const res = await fetch('/api/goals'); // adjust route if needed
-    const data = await res.json();
-    setGoals(data);
-  };
-
-  const mapGoalsToSchedule = (goals: Goal[]): DaySchedule[] => {
     const today = startOfToday();
-    const days: DaySchedule[] = [];
+    const upcomingDays: DayGoalGroup[] = [];
 
-    for (let i = 0; i < 31; i++) {
-      const current = addDays(today, i);
-      days.push({ date: current, goals: [] });
-    }
+    for (let i = 0; i < 30; i++) {
+      const day = addDays(today, i);
+      const dayName = format(day, 'EEEE');
 
-    for (const goal of goals) {
-      const frequency = goal.frequency;
-      let added = 0;
+      const goalsForDay = allGoals.filter((goal) =>
+        goal.weekdays?.some((wd) => wd.dayName === dayName)
+      );
 
-      for (let i = 0; i < 7 && added < frequency; i++) {
-        const d = addDays(today, i);
-        days
-          .find(
-            (day) => format(day.date, 'yyyy-MM-dd') === format(d, 'yyyy-MM-dd')
-          )
-          ?.goals.push(goal);
-        added++;
+      if (goalsForDay.length > 0) {
+        upcomingDays.push({ date: day, goals: goalsForDay });
       }
     }
 
-    return days;
-  };
+    setSchedule(upcomingDays);
+  }, [allGoals]);
+
+  if (loading) return <div className="schedule-container">Loading...</div>;
+  if (error) return <div className="schedule-container">{error}</div>;
 
   return (
     <div className="schedule-container">
-      <h2>Scheduled</h2>
-      {schedule.map((day, i) => (
-        <div key={i} className="day-row">
-          <div className="day-label">
-            <strong>{format(day.date, 'dd')}</strong> {format(day.date, 'EEE')}
+      <h1 className="schedule-title">Your Schedule</h1>
+      {schedule.map((dayGroup) => (
+        <div key={dayGroup.date.toISOString()} className="day-group">
+          <div className="day-header">
+            <div className="day-name">
+              {format(dayGroup.date, 'EEE').toUpperCase()}
+            </div>
+            <div className="day-number">{format(dayGroup.date, 'd')}</div>
           </div>
-          <div className="day-goals">
-            {day.goals.map((goal) => (
-              <div key={goal.goal_id} className="goal-entry">
-                {goal.title}
+          <div className="goals-list">
+            {dayGroup.goals.map((goal) => (
+              <div
+                key={goal.goal_id}
+                className={`goal-block ${goal.category.toLowerCase()}`}
+              >
+                <input type="checkbox" className="goal-checkbox" />
+                <div className="goal-details">
+                  <div className="goal-title">{goal.title}</div>
+                </div>
               </div>
             ))}
-            <button className="add-goal-button">+</button>
           </div>
         </div>
       ))}
+      <MenuBar />
     </div>
   );
-}
+};
 
 export default Schedule;
