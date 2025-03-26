@@ -79,6 +79,12 @@ const IndivGoal: React.FC = () => {
             <li key={goal.goal_id} className="goal-item">
               <div className="goal-content">
                 <span>{goal.title}</span>
+                <button
+                  className="edit-goal-button"
+                  onClick={() => navigate(`/editGoal/${goal.goal_id}`)}
+                >
+                  Edit
+                </button>
                 <button 
                   className="delete-goal-button"
                   onClick={() => handleDeleteGoal(goal.goal_id)}

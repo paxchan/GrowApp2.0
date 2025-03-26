@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './goal.css';
+// import { useParams } from 'react-router-dom';
+
+// const { goalId } = useParams<{ goalId: string }>(); 
 
 interface Goal {
   goal_id: number;
