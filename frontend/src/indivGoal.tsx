@@ -46,30 +46,48 @@ const IndivGoal: React.FC = () => {
       </div>
     );
 
-    const handleDeleteGoal = async (goalId: number) => {
-      try {
-        setDeleteLoading(goalId);
-        // Call your API to delete the goal
-        await axios.delete(`http://localhost:5000/api/Goal/${goalId}`);
-        
-        // Update the local state by removing the deleted goal
-        setGoals(goals.filter(goal => goal.goal_id !== goalId));
-      } catch (err) {
-        setError('Failed to delete the goal. Please try again.');
-      } finally {
-        setDeleteLoading(null);
-      }
-    };
+  const handleDeleteGoal = async (goalId: number) => {
+    try {
+      setDeleteLoading(goalId);
+      // Call your API to delete the goal
+      await axios.delete(`http://localhost:5000/api/Goal/${goalId}`);
+
+      // Update the local state by removing the deleted goal
+      setGoals(goals.filter((goal) => goal.goal_id !== goalId));
+    } catch (err) {
+      setError('Failed to delete the goal. Please try again.');
+    } finally {
+      setDeleteLoading(null);
+    }
+  };
 
   return (
     <div className="category-container">
-      <h1 className="category-title">{category?.toUpperCase()} Goals</h1>
+      <div className="category-header-wrapper">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
+        <h1 className="category-title">{category?.toUpperCase()} Goals</h1>
+      </div>
 
       <div className="category-circle">
         <div className="goal-text">{category?.toUpperCase()}</div>
       </div>
-
-      <div className="category-level-label">Level 1</div>
 
       <div className="goal-list-container">
         <h2>Your Goals</h2>
@@ -79,7 +97,7 @@ const IndivGoal: React.FC = () => {
             <li key={goal.goal_id} className="goal-item">
               <div className="goal-content">
                 <span>{goal.title}</span>
-                <button 
+                <button
                   className="delete-goal-button"
                   onClick={() => handleDeleteGoal(goal.goal_id)}
                   disabled={deleteLoading === goal.goal_id}

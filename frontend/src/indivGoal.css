@@ -1,182 +1,203 @@
 /* ===== Base Layout ===== */
 .category-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px 24px;
-    min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #a8baa2;
-    text-align: center;
-  }
-  
-  /* ===== Title ===== */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 24px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #a8baa2;
+  text-align: center;
+}
+
+/* ===== Title ===== */
+.category-title {
+  font-size: 72px;
+  font-family: 'Lilita One', sans-serif;
+  margin: 24px 0 32px;
+  color: #000;
+}
+
+/* ===== Category Circle ===== */
+.category-circle {
+  width: 240px;
+  height: 240px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-circle .goal-text {
+  font-size: 26px;
+  font-family: 'Hannari', serif;
+  letter-spacing: 0.15em;
+  color: #000;
+}
+
+/* ===== Level Label ===== */
+.category-level-label {
+  font-size: 24px;
+  font-family: 'Hannari', serif;
+  color: #000;
+  margin-bottom: 32px;
+}
+
+/* ===== Goal List Container ===== */
+.goal-list-container {
+  background-color: #d9d9d9;
+  border-radius: 36px;
+  padding: 24px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 48px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.goal-list-container h2 {
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.goal-list-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #555;
+  margin-bottom: 20px;
+}
+
+.goal-items {
+  list-style-position: inside; /* Keep bullets with text */
+  padding: 0;
+  margin: 0;
+  text-align: left; /* Center the bullet points */
+}
+
+.goal-item {
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  color: #1e1e1e;
+  margin-bottom: 12px;
+}
+
+.goal-items li::marker {
+  color: #555;
+  content: '🌱 ';
+}
+
+/* ===== Button ===== */
+.add-goal-button {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  width: 260px;
+  height: 56px;
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-goal-button:hover {
+  background-color: #c0c0c0;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 480px) {
   .category-title {
-    font-size: 72px;
-    font-family: 'Lilita One', sans-serif;
-    margin: 24px 0 32px;
-    color: #000;
+    font-size: 48px;
   }
-  
-  /* ===== Category Circle ===== */
+
   .category-circle {
-    width: 240px;
-    height: 240px;
-    background-color: #d9d9d9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 32px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 180px;
+    height: 180px;
   }
-  
+
   .category-circle .goal-text {
-    font-size: 26px;
-    font-family: 'Hannari', serif;
-    letter-spacing: 0.15em;
-    color: #000;
+    font-size: 20px;
   }
-  
-  /* ===== Level Label ===== */
+
   .category-level-label {
-    font-size: 24px;
-    font-family: 'Hannari', serif;
-    color: #000;
-    margin-bottom: 32px;
+    font-size: 18px;
   }
-  
-  /* ===== Goal List Container ===== */
+
   .goal-list-container {
-    background-color: #d9d9d9;
-    border-radius: 36px;
-    padding: 24px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 48px;
-    box-sizing: border-box;
-    text-align: left;
-  }
-  
-  .goal-list-container h2 {
-    font-size: 28px;
-    font-family: 'Inter', sans-serif;
-    margin-bottom: 12px;
-    color: #333;
-  }
-  
-  .goal-list-divider {
-    width: 100%;
-    height: 2px;
-    background-color: #555;
-    margin-bottom: 20px;
-  }
-
-  .goal-items {
-    list-style-position: inside; /* Keep bullets with text */
-    padding: 0;
-    margin: 0;
-    text-align: left; /* Center the bullet points */
-  }
-  
-  .goal-item {
-    font-size: 18px;
-    font-family: 'Inter', sans-serif;
-    color: #1e1e1e;
-    margin-bottom: 12px;
-  }
-
-  .goal-items li::marker {
-    color: #555;
-    content: "🌱 ";
-  }
-  
-  /* ===== Button ===== */
-  .add-goal-button {
-    background-color: #d9d9d9;
-    border-radius: 20px;
-    width: 260px;
-    height: 56px;
     padding: 16px;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    color: #000;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
-  .add-goal-button:hover {
-    background-color: #c0c0c0;
+
+  .goal-list-container h2 {
+    font-size: 22px;
   }
-  
-  /* ===== Responsive Styles ===== */
-  @media (max-width: 480px) {
-    .category-title {
-      font-size: 48px;
-    }
-  
-    .category-circle {
-      width: 180px;
-      height: 180px;
-    }
-  
-    .category-circle .goal-text {
-      font-size: 20px;
-    }
-  
-    .category-level-label {
-      font-size: 18px;
-    }
-  
-    .goal-list-container {
-      padding: 16px;
-    }
-  
-    .goal-list-container h2 {
-      font-size: 22px;
-    }
-  
-    .goal-item {
-      font-size: 16px;
-      padding: 12px 16px;
-    }
-  
-    .add-goal-button {
-      width: 220px;
-      height: 48px;
-      font-size: 16px;
-    }
+
+  .goal-item {
+    font-size: 16px;
+    padding: 12px 16px;
   }
-  
-  .goal-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+
+  .add-goal-button {
+    width: 220px;
+    height: 48px;
+    font-size: 16px;
   }
-  
-  .delete-goal-button {
-    background-color: #ff4757;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: background-color 0.3s;
-  }
-  
-  .delete-goal-button:hover {
-    background-color: #ff6b81;
-  }
-  
-  .delete-goal-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+}
+
+.goal-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.delete-goal-button {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s;
+}
+
+.delete-goal-button:hover {
+  background-color: #ff6b81;
+}
+
+.delete-goal-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.category-header-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.back-button:hover {
+  color: #708e6a;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}

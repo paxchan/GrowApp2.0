@@ -1,0 +1,119 @@
+/* ===== Profile Page Styles ===== */
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 60px;
+}
+
+/* === Header Section === */
+.profile-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* === Stats Section === */
+.profile-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.stat-item p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.stat-item p:last-child {
+  font-size: 12px;
+  color: #555;
+}
+
+/* === Bio === */
+.profile-bio {
+  margin: 0 20px;
+  font-size: 13px;
+  color: #333;
+  white-space: pre-line;
+  text-align: left;
+}
+
+/* === Action Buttons === */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.profile-actions button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-actions button:hover {
+  background-color: #cfcfcf;
+}
+
+/* === Grid === */
+.profile-grid {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-grid-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.profile-grid img {
+  width: calc(33.33% - 6px);
+  aspect-ratio: 1 / 1;
+  border-radius: 0px;
+  object-fit: cover;
+}
+
+@media (max-width: 360px) {
+  .profile-grid img {
+    width: calc(33.33% - 5px);
+  }
+}
