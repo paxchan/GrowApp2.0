@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './goal.css';
-// import { useParams } from 'react-router-dom';
-
-// const { goalId } = useParams<{ goalId: string }>(); 
 
 interface Goal {
   goal_id: number;
@@ -21,8 +18,7 @@ const EditGoal: React.FC = () => {
   const [reason, setReason] = useState('');
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-
-  const weekdays = [
+  const weekdayMapping = [
     'Monday',
     'Tuesday',
     'Wednesday',
@@ -65,39 +61,42 @@ const EditGoal: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const goalData = {
-      user_id: 1, // 🔥 temporarily hardcoded
+  
+    const goalId = id ? parseInt(id, 10) : null;
+    if (!goalId) {
+      console.error('No goal ID found in URL');
+      return;
+    }
+  
+    const updatedGoal = {
+      goal_id: goalId,
       title,
       category,
       reason,
-      weekdays: selectedDays.map((day) => ({ dayName: day })),
+      weekdays: selectedDays.map((day, index) => ({
+        weekdayId: index,
+        goalId: goalId,
+        dayName: weekdayMapping[day],
+      })),
     };
-
+  
     try {
-      if (!id) {
-        throw new Error('No goal ID found');
-      }
-
-      const response = await fetch(`/api/Goal/${id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(goalData),
+      const response = await fetch(`http://localhost:5000/api/Goal/${goalId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedGoal),
       });
-
-      if (response.ok) {
-        console.log('Goal updated successfully!');
-        navigate('/garden');
-      } else {
-        console.error('Failed to update goal:', response.statusText);
+  
+      if (!response.ok) {
+        throw new Error('Failed to update goal');
       }
+  
+      console.log('Goal updated successfully!');
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error updating goal:', error);
     }
   };
-
+  
   return (
     <div className="goal-container">
       <div className="goal-header">
@@ -165,7 +164,7 @@ const EditGoal: React.FC = () => {
           <div className="form-group">
             <label>Which days are you working on your goal?</label>
             <div className="checkbox-group">
-              {weekdays.map((day) => (
+              {weekdayMapping.map((day) => (
                 <label key={day}>
                   <input
                     type="checkbox"
