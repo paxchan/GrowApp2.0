@@ -93,19 +93,19 @@ namespace GrowApp2._0.Controllers
 
             return CreatedAtAction(nameof(GetGoal), new { id = goal.goal_id }, goal);
         }
-
-        // POST: api/Goal/{id}
-        [HttpPost("{id}")]
-        public async Task<IActionResult> UpdateGoal(int id, [FromBody] Goal updatedGoal)
+        
+        // PUT: api/Goal/{id}
+        [HttpPut("{goalId}")]
+        public async Task<IActionResult> UpdateGoal(int goalId, [FromBody] Goal updatedGoal)
         {
-            if (id != updatedGoal.goal_id)
+            if (goalId != updatedGoal.goal_id)
             {
                 return BadRequest("Goal ID mismatch.");
             }
 
             var goal = await _context.Goals
-                .Include(g => g.Weekdays)
-                .FirstOrDefaultAsync(g => g.goal_id == id);
+                .Include(g => g.Weekdays) 
+                .FirstOrDefaultAsync(g => g.goal_id == goalId);
 
             if (goal == null)
             {
@@ -118,10 +118,12 @@ namespace GrowApp2._0.Controllers
             goal.category = updatedGoal.category;
             goal.level = updatedGoal.level;
 
-            // If you want to replace weekdays:
+            // Ensure Weekdays list is initialized before clearing
+            goal.Weekdays ??= new List<Weekday>();
+            goal.Weekdays.Clear();
+
             if (updatedGoal.Weekdays != null)
             {
-                goal.Weekdays.Clear();
                 foreach (var weekday in updatedGoal.Weekdays)
                 {
                     goal.Weekdays.Add(new Weekday
@@ -133,9 +135,9 @@ namespace GrowApp2._0.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok("Goal updated successfully.");
         }
-
+        
         // DELETE: api/Goal/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGoal(int id)

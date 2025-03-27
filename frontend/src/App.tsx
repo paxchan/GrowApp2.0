@@ -40,7 +40,7 @@ function App() {
         <Route path="/garden" element={<Garden />} />
         <Route path="/goal" element={<GoalForm />} />
         <Route path="/goal/:category" element={<IndivGoal />} />
-        <Route path="/editGoal/:goalId" element={<EditGoal />} />
+        <Route path="/editGoal/:id" element={<EditGoal />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/profile" element={<Profile />} />
