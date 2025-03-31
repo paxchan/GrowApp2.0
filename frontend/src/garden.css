@@ -239,3 +239,19 @@
     margin-bottom: 30px;
   }
 }
+
+.circle-wrapper {
+  width: 600px;  /* Adjust this to match the circle size */
+  height: 600px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures nothing sticks out */
+}
+
+.circle-wrapper img {
+  max-width: 140%; /* Reduce size inside the circle */
+  max-height: 140%;
+  object-fit: contain; /* Prevents cropping */
+}

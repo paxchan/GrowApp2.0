@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import MenuBar from './menuBar'; // adjust path if needed
 
 // Placeholder images - these would be replaced with actual images in production
-import socialImage from './assets/intellectual.png';
-import physicalImage from './assets/intellectual.png';
-import spiritualImage from './assets/intellectual.png';
-import intellectualImage from './assets/intellectual.png';
+import socialImage from './assets/social.png';
+import physicalImage from './assets/physical.png';
+import spiritualImage from './assets/spiritual.png';
+import intellectualImage from './assets/intellectua.png';
 
 const Garden: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -58,7 +58,11 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Social Goals"
           >
-            <div className="goal-text">SOCIAL</div>
+          <div className="circle-wrapper">
+            <img src={socialImage} alt="Description" />
+          </div>
+
+
           </div>
 
           {/* Physical Goal */}
@@ -68,7 +72,12 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Physical Goals"
           >
-            <div className="goal-text">PHYSICAL</div>
+          
+          <div className="circle-wrapper">
+            <img src={physicalImage} alt="Description" />
+          </div>
+
+            
           </div>
 
           {/* Spiritual Goal */}
@@ -78,7 +87,9 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Spiritual Goals"
           >
-            <div className="goal-text">SPIRITUAL</div>
+          <div className="circle-wrapper">
+            <img src={spiritualImage} alt="Description" />
+          </div>
           </div>
 
           {/* Intellectual Goal */}
@@ -88,7 +99,10 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Intellectual Goals"
           >
-            <div className="goal-text">INTELLECTUAL</div>
+          <div className="circle-wrapper">
+            <img src={intellectualImage} alt="Description" />
+          </div>
+
           </div>
         </div>
 
