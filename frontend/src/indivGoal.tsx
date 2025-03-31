@@ -165,7 +165,6 @@ const IndivGoal: React.FC = () => {
             <p className="goal-reason">Why: {goal.reason}</p>
 
             <div className="goal-button-group">
-              <button className="goal-action-button">Share</button>
               <button className="goal-action-button">Post</button>
               <button className="goal-action-button">Friends</button>
               <button
