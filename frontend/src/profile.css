@@ -79,6 +79,7 @@ main {
 
 .profile-actions button {
   background-color: #e0e0e0;
+  color: #555;
   border: none;
   border-radius: 24px;
   padding: 10px 24px;

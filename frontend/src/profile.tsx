@@ -29,15 +29,15 @@ function ProfileStats({ posts, followers, following }: ProfileStatsProps) {
     <div className="profile-stats">
       <div className="stat-item">
         <p>{posts}</p>
-        <p>post</p>
+        <p>posts</p>
       </div>
       <div className="stat-item">
         <p>{followers}</p>
-        <p>followers</p>
+        <p>friends</p>
       </div>
       <div className="stat-item">
         <p>{following}</p>
-        <p>following</p>
+        <p>encouraging</p>
       </div>
     </div>
   );

@@ -58,11 +58,9 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Social Goals"
           >
-          <div className="circle-wrapper">
-            <img src={socialImage} alt="Description" />
-          </div>
-
-
+            <div className="circle-wrapper">
+              <img src={socialImage} alt="Description" />
+            </div>
           </div>
 
           {/* Physical Goal */}
@@ -72,12 +70,9 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Physical Goals"
           >
-          
-          <div className="circle-wrapper">
-            <img src={physicalImage} alt="Description" />
-          </div>
-
-            
+            <div className="circle-wrapper">
+              <img src={physicalImage} alt="Description" />
+            </div>
           </div>
 
           {/* Spiritual Goal */}
@@ -87,9 +82,9 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Spiritual Goals"
           >
-          <div className="circle-wrapper">
-            <img src={spiritualImage} alt="Description" />
-          </div>
+            <div className="circle-wrapper">
+              <img src={spiritualImage} alt="Description" />
+            </div>
           </div>
 
           {/* Intellectual Goal */}
@@ -99,10 +94,9 @@ const Garden: React.FC = () => {
             role="button"
             aria-label="Intellectual Goals"
           >
-          <div className="circle-wrapper">
-            <img src={intellectualImage} alt="Description" />
-          </div>
-
+            <div className="circle-wrapper">
+              <img src={intellectualImage} alt="Description" />
+            </div>
           </div>
         </div>
 
@@ -111,7 +105,7 @@ const Garden: React.FC = () => {
           className="create-goal-button"
           onClick={() => navigate('/goal')}
         >
-          Create a new goal
+          Make a new goal
         </button>
       </div>
       {/* ✅ Bottom App Bar */}

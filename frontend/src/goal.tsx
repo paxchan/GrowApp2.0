@@ -8,7 +8,6 @@ const GoalForm: React.FC = () => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [reason, setReason] = useState('');
   const navigate = useNavigate();
-
   const weekdays = [
     'Monday',
     'Tuesday',
@@ -58,7 +57,29 @@ const GoalForm: React.FC = () => {
 
   return (
     <div className="goal-container">
-      <div className="goal-header">
+      <button
+        className="back-button"
+        onClick={() => navigate(-1)}
+        style={{ position: 'absolute', left: '20px', top: '20px' }} // Inline styles here
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <div className="goal-header-2">
         <h1>Create a Goal</h1>
       </div>
       <div className="goal-form-container">
@@ -122,17 +143,16 @@ const GoalForm: React.FC = () => {
 
           <div className="form-group">
             <label>Which days are you working on your goal?</label>
-            <div className="checkbox-group">
-              {weekdays.map((day) => (
-                <label key={day}>
-                  <input
-                    type="checkbox"
-                    value={day}
-                    checked={selectedDays.includes(day)}
-                    onChange={() => handleDaySelection(day)}
-                  />
-                  {day}
-                </label>
+            <div className="weekdays-container">
+              {weekdays.map((day, index) => (
+                <button
+                  key={day}
+                  type="button"
+                  className={`weekday-btn ${selectedDays.includes(day) ? 'selected' : ''}`}
+                  onClick={() => handleDaySelection(day)}
+                >
+                  {day.charAt(0)}
+                </button>
               ))}
             </div>
           </div>

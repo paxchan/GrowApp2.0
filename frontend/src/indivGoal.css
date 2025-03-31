@@ -7,7 +7,6 @@
   padding: 40px 24px;
   min-height: 100vh;
   width: 100%;
-  box-sizing: border-box;
   background-color: #a8baa2;
   text-align: center;
 }
@@ -24,20 +23,49 @@
 .category-circle {
   width: 240px;
   height: 240px;
-  background-color: #d9d9d9;
+  background-color: #f0f0f0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 32px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
-.category-circle .goal-text {
+/* ===== Goal Image Container (Centered and Larger) ===== */
+.goal-image-container {
+  width: 480px; /* Proper size */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px; /* Keeps it close to the top */
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* Bigger goal image properly centered */
+.goal-image {
+  width: 100%; /* Allow flexible scaling */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 480px; /* Prevent it from being too large */
+  max-height: 480px;
+  object-fit: contain; /* Prevents cropping */
+  position: relative;
+}
+
+/* Goal text now placed inside the circle with the image */
+.goal-text {
   font-size: 26px;
   font-family: 'Hannari', serif;
   letter-spacing: 0.15em;
   color: #000;
+  position: absolute;
+  top: 85%; /* Positioning the text near the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 /* ===== Level Label ===== */
@@ -186,10 +214,113 @@
   margin-bottom: 16px;
 }
 
+/* ===== Goal Category Title ===== */
+.goal-category-title {
+  font-size: 28px;
+  font-family: 'Lilita One', sans-serif;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* ===== Goal Card ===== */
+.goal-card {
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Goal Title */
+.goal-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Goal Level */
+.goal-level,
+.goal-reason {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.goal-days {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+/* ===== Goal Button Group ===== */
+.goal-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+/* Button Styles */
+.edit-goal-button,
+.delete-goal-button,
+.goal-action-button {
+  background-color: #708e6a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 10px;
+  margin: 2px;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effects */
+.edit-goal-button:hover {
+  background-color: #5a7c5a;
+}
+.delete-goal-button {
+  background-color: #ff4757;
+}
+.delete-goal-button:hover {
+  background-color: #ff6b81;
+}
+.delete-goal-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.goal-action-button:hover {
+  background-color: #5a7c5a;
+}
+
+/* ===== Add New Goal Button ===== */
+.add-goal-button {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  width: 260px;
+  height: 56px;
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-goal-button:hover {
+  background-color: #c0c0c0;
+}
+
+/* ===== Back Button ===== */
 .back-button {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 20px;
+  top: 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -200,4 +331,42 @@
   color: #708e6a;
   transform: scale(1.1);
   transition: all 0.2s ease;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 480px) {
+  .goal-card {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .goal-title {
+    font-size: 20px;
+  }
+
+  .goal-level,
+  .goal-days,
+  .goal-reason {
+    font-size: 14px;
+  }
+
+  .goal-button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .edit-goal-button,
+  .delete-goal-button,
+  .goal-action-button {
+    margin-top: 8px;
+  }
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 0px;
+  text-align: left;
 }

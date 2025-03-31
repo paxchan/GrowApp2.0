@@ -69,3 +69,33 @@
 .post-text {
   margin-top: 10px;
 }
+
+.post-actions {
+  display: flex;
+  justify-content: right;
+  margin-top: 12px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  padding: 5px 8px;
+  gap: 8px;
+}
+
+.action-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Add hover effect */
+.action-btn:hover {
+  color: #333;
+  transform: scale(1.05);
+}

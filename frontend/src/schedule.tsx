@@ -78,7 +78,11 @@ const Schedule: React.FC = () => {
                 key={goal.goal_id}
                 className={`goal-block ${goal.category.toLowerCase()}`}
               >
-                <input type="checkbox" className="goal-checkbox" />
+                {/* Only show checkbox if it's today's goal */}
+                {format(dayGroup.date, 'yyyy-MM-dd') ===
+                  format(startOfToday(), 'yyyy-MM-dd') && (
+                  <input type="checkbox" className="goal-checkbox" />
+                )}
                 <div className="goal-details">
                   <div className="goal-title">{goal.title}</div>
                 </div>

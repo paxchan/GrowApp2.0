@@ -28,12 +28,12 @@ body {
   overflow-y: auto;
 }
 
-.goal-header {
+.goal-header-2 {
   padding: 30px 20px 20px;
   text-align: center;
 }
 
-.goal-header h1 {
+.goal-header-2 h1 {
   font-family: 'Lilita One', sans-serif;
   font-size: 48px;
   line-height: 1.5;
@@ -76,7 +76,7 @@ body {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  color: #b3b3b3;
+  color: #1e1e1e;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   padding: 12px 16px;
@@ -142,11 +142,11 @@ body {
 
 /* Responsive styles */
 @media (min-width: 768px) {
-  .goal-header {
+  .goal-header-2 {
     padding-top: 80px;
   }
 
-  .goal-header h1 {
+  .goal-header-2 h1 {
     font-size: 64px;
   }
 
@@ -165,4 +165,57 @@ body {
   .goal-form {
     max-width: 700px;
   }
+}
+
+.weekdays-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.weekday-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #a8baa2; /* Default button color */
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.weekday-btn:hover {
+  background-color: #a8baa2; /* Slightly darker on hover */
+}
+
+.weekday-btn.selected {
+  background-color: #1e1e1e; /* Darker color when selected */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.weekday-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(100, 123, 133, 0.8);
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.back-button:hover {
+  color: #708e6a;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
 }
